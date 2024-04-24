@@ -3,24 +3,31 @@ import mongoose from "mongoose";
 const orderSchema = new mongoose.Schema({
     ownedBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User', 
-        required: true
+        ref: 'User'
     },
     isSet: {
         type: Boolean,
         default: false
     },
-    elementId: {
+    productId: {
         type: mongoose.Schema.ObjectId,
         ref: 'Product',
         required: true
     },
     status: {
         type: String,
-        default: pending
+        default: 'pending'
     },
     linkedTo: {
+        type: String,
+        default: process.env.DOMAIN
+    },
+    qrLink: {
         type: String
+    },
+    size: {
+        type: String,
+        required: true
     }
 })
 
